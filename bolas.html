@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Mulheres Ciclistas</title>
+  <title>Mulheres que caminham</title>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <h2>Mulheres Ciclistas</h2>
+      <h2>Caminhada das Mulheres</h2>
     </div>
     <div class="row mychart" id="chart">
     </div>
@@ -34,6 +34,7 @@
 
 <script src="https://d3js.org/d3-time.v1.min.js"></script>
 <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
+<script src="https://d3js.org/d3-random.v1.min.js"></script>
 
   <script type="text/javascript">
     "use strict"
@@ -47,55 +48,42 @@
                     .attr("height", height)
 
     var escala_x = d3.scaleLinear()  // crie uma função de escala linear
-                  .domain([0, 50])  // de um domínio de 1 a 5
+                  .domain([0, 420])  // de um domínio de 1 a 5
                   .rangeRound([0, height]);
     var color_scale = d3.scaleLinear()
-                        .domain([0,30])
+                        .domain([0,420])
                         .range(["#cc0044", "#ffb3cc"]);
 
 
     function desenhaBarras(dados) {
 
-      canvas.selectAll("rect")
+      canvas.selectAll("circle")
         .data(dados)
         .enter()
-              .append("rect")
-              .attr("width", 30 )
-              .attr("height", function(d){return escala_x(d.mulheres_ciclistas);})
-              .attr("x", function(d, i){return i *40  + 60   ;})
-              .attr("y", function(d){return  height -escala_x(d.mulheres_ciclistas) -10 ;})
-              .attr("fill", function(d){return color_scale(d.mulheres_ciclistas)})
+              .append("circle")
+              .attr("r", function(d){return escala_x(d.mulheres_pedestres)/5;})
+              .attr("cx", function(d,i){ return i * 40 + 100;})
+              .attr("cy", 300)
+              .attr("fill", function(d){return color_scale(d.mulheres_pedestres)})
 
       canvas.selectAll("text")
             .data(dados)
             .enter()
                   .append("text")
                   .attr("width",30 )
-                  .attr("x", function(d,i){return i *40  + 65   ;})
+                  .attr("x", function(d,i){return i *40  + 80   ;})
                   .attr("y", 500)
-                  .attr("fill", "black")
+                  .attr("fill", "#cc0044")
                   .attr("font-size", "10px")
                   .attr("font-family", "comic-sans")
                   .text(function(d){return d.horario_inicial})
-
-     canvas.selectAll("numbers")
-          .data(dados)
-          .enter()
-                  .append("text")
-                  .attr("width",100 )
-                  .attr("x", function(d,i){return i *40  + 70   ;})
-                  .attr("y", function(d){return height -escala_x(d.mulheres_ciclistas) -15;})
-                  .attr("font-family", "comic-sans")
-                  .attr("fill", "#cc0044")
-                  .text(function(d){return d.mulheres_ciclistas})
-
 
 
     }
 
 
 
-    d3.tsv('mulheresbike.csv', function(dados) {
+    d3.tsv('mulherespedestres.csv', function(dados) {
       dados['horario_inicial'] = formatoDahora(dados['horario_inicial']);
       desenhaBarras(dados);
     });
