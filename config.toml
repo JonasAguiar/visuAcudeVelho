@@ -1,6 +1,6 @@
 baseURL = "https://github.com/JonasAguiar/visuAcudeVelho"
 languageCode = "en"
-title = "Hugo Blog"
+title = "As mulheres no Açude Velho"
 theme = "hugo-nuo"
 enableRobotsTXT = true
 PygmentsCodeFences = true
@@ -13,8 +13,6 @@ disqusShortname = "disqus_shortname"
 # Google Analytics UA number
 googleAnalytics = "UA-XXXXXXXX-X"
 
-# Copyright of your post
-copyright = "© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce."
 
 # Initial site menu, you can extend menu with content.
 [[menu.main]]
@@ -23,24 +21,14 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   identifier = "home"
   url = "/"
 
-[[menu.main]]
-  name = "Works"
-  weight = 20
-  identifier = "works"
-  url = "https://github.com/laozhu"
 
-[[menu.main]]
-  name = "Tags"
-  weight = 30
-  identifier = "tags"
-  url = "/tags/"
 
 # Add your own params here
 [params]
   author = "Ritchie Zhu"
-  avatar = "/img/avatar.jpg"
+  avatar = "/Downloads/ss.jpeg"
   seotitle = "Hugo Blog (SEO Version)"
-  subtitle = "~ Keep It Simple & Stupid ~"
+  subtitle = "um açude mais feminino"
   description = "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again."
   paginate = 10
 
